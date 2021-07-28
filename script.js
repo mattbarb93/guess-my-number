@@ -13,7 +13,6 @@
 
 //Define Secret Number
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
-document.querySelector('.number').textContent = secretNumber;
 
 //Define Score variable
 let score = 20;
@@ -27,7 +26,7 @@ document.querySelector('.check').addEventListener('click', function () {
   /*
     GAME LOGIC
         - If the user leaves the field empty, send a warning message
-        - If the user guesses the secret number correctly, display a congrats message!
+        - If the user guesses the secret number correctly, display a congrats message, and change the background color!
         - If the guess is higher than the secret number, decrease a point of the score
         - If the guess is lower than the secret number, decrease a point of the score
   */
@@ -35,6 +34,9 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.message').textContent = 'No Number! ⛔';
   } else if (guess === secretNumber) {
     document.querySelector('.message').textContent = 'Correct Number 🎉';
+    document.querySelector('body').style.backgroundColor = '#60b347';
+    document.querySelector('.number').style.width = '30rem';
+    document.querySelector('.number').textContent = secretNumber;
   } else if (guess > secretNumber) {
     if (score > 1) {
       score--;
