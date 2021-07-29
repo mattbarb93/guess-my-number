@@ -12,7 +12,7 @@
 // document.querySelector('.guess').value = 24;
 
 //Define Secret Number
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 //Define Score variable
 let score = 20;
@@ -20,7 +20,7 @@ let score = 20;
 //Select button, then on click, do something
 document.querySelector('.check').addEventListener('click', function () {
   //Define the number that the user entered as an actual number, instead of a string
-  const guess = Number(document.querySelector('.guess').value);
+  let guess = Number(document.querySelector('.guess').value);
   console.log(guess, typeof guess);
 
   /*
@@ -57,4 +57,19 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.score').textContent = 0;
     }
   }
+});
+
+/*
+Again button functionality
+*/
+
+document.querySelector('.again').addEventListener('click', function () {
+  document.querySelector('.score').textContent = 20;
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
+  document.querySelector('.message').textContent = 'Start Guessing...';
+  document.querySelector('.highscore').textContent = 0;
+  document.querySelector('.guess').value = null;
+  document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.number').style.width = '15rem';
+  document.querySelector('.number').textContent = '?';
 });
