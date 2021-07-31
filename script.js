@@ -17,6 +17,8 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1;
 //Define Score variable
 let score = 20;
 
+let highscore = 0;
+
 //Select button, then on click, do something
 document.querySelector('.check').addEventListener('click', function () {
   //Define the number that the user entered as an actual number, instead of a string
@@ -37,6 +39,11 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
     document.querySelector('.number').textContent = secretNumber;
+
+    if (score > highscore) {
+      highscore = score;
+      document.querySelector('.highscore').textContent = highscore;
+    }
   } else if (guess > secretNumber) {
     if (score > 1) {
       score--;
@@ -67,7 +74,6 @@ document.querySelector('.again').addEventListener('click', function () {
   document.querySelector('.score').textContent = 20;
   secretNumber = Math.trunc(Math.random() * 20) + 1;
   document.querySelector('.message').textContent = 'Start Guessing...';
-  document.querySelector('.highscore').textContent = 0;
   document.querySelector('.guess').value = null;
   document.querySelector('body').style.backgroundColor = '#222';
   document.querySelector('.number').style.width = '15rem';
